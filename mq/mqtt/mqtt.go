@@ -35,20 +35,24 @@ type MQTTModule struct {
 	name string
 }
 
-func New(name string, opts ...MqttOptions) *MQTTModule {
-	if name == "" {
-		name = "mqtt"
-	}
+type ModuleOptions func(*MQTTModule)
+
+func (m *MQTTModule) WithName(name string) *MQTTModule {
+	m.name = name
+	return m
+}
+
+func New(opt ...ModuleOptions) *MQTTModule {
 	m := &MQTTModule{
-		name: name,
+		name: "mqtt",
 		cfg:  Config{}, // 初始化配置以避免 nil 引用
 		opt: &Option{
 			topic:   make(map[string]byte),
 			handler: func(topic string, payload []byte) {}, // 默认空处理函数
 		}, // 初始化 Option 以避免 nil 引用
 	}
-	for _, o := range opts {
-		o(m.opt)
+	for _, o := range opt {
+		o(m)
 	}
 	return m
 }

@@ -20,14 +20,23 @@ type Module struct {
 	name string
 }
 
-func New(name string) *Module {
-	if name == "" {
-		name = "bolt"
-	}
-	return &Module{
-		name: name,
+type ModuleOptions func(*Module)
+
+func (m *Module) WithName(name string) *Module {
+	m.name = name
+	return m
+}
+
+func New(opt ...ModuleOptions) *Module {
+	m := &Module{
+		cfg:  Config{},
+		name: "bolt",
 		db:   nil,
 	}
+	for _, o := range opt {
+		o(m)
+	}
+	return m
 }
 
 func (m *Module) Name() string { return m.name }

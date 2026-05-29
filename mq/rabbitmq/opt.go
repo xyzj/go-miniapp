@@ -5,15 +5,19 @@ type Option struct {
 	handler func(topic string, payload []byte) // 业务处理逻辑
 }
 
-type RmqOptions func(*Option)
-
-func WithSubscription(topics []string, handler func(topic string, payload []byte)) RmqOptions {
+func WithSubscription(topics []string, handler func(topic string, payload []byte)) ModuleOptions {
 	if len(topics) == 0 || handler == nil {
 		topics = make([]string, 0)                      // 避免 nil 引用
 		handler = func(topic string, payload []byte) {} // 默认空处理函数
 	}
-	return func(opt *Option) {
-		opt.topic = topics
-		opt.handler = handler
+	return func(m *RabbitMQModule) {
+		if m.opt == nil {
+			m.opt = &Option{
+				topic:   make([]string, 0),
+				handler: func(topic string, payload []byte) {},
+			}
+		}
+		m.opt.topic = topics
+		m.opt.handler = handler
 	}
 }

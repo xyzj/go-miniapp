@@ -31,13 +31,22 @@ type Module struct {
 	name string
 }
 
-func New(name string) *Module {
-	if name == "" {
-		name = "mysql"
+type ModuleOptions func(*Module)
+
+func (m *Module) WithName(name string) *Module {
+	m.name = name
+	return m
+}
+
+func New(opt ...ModuleOptions) *Module {
+	m := &Module{
+		cfg:  Config{},
+		name: "mysql",
 	}
-	return &Module{
-		name: name,
+	for _, o := range opt {
+		o(m)
 	}
+	return m
 }
 
 func (m *Module) Name() string { return m.name }

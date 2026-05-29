@@ -45,12 +45,16 @@ type RabbitMQModule struct {
 	name string
 }
 
-func New(name string, opt ...RmqOptions) *RabbitMQModule {
-	if name == "" {
-		name = "rabbitmq"
-	}
+type ModuleOptions func(*RabbitMQModule)
+
+func (m *RabbitMQModule) WithName(name string) *RabbitMQModule {
+	m.name = name
+	return m
+}
+
+func New(opt ...ModuleOptions) *RabbitMQModule {
 	m := &RabbitMQModule{
-		name: name,
+		name: "rabbitmq",
 		conn: nil,
 		ch:   nil,
 		cfg:  Config{}, // 初始化配置以避免 nil 引用
@@ -60,7 +64,7 @@ func New(name string, opt ...RmqOptions) *RabbitMQModule {
 		}, // 初始化 Option 以避免 nil 引用
 	}
 	for _, o := range opt {
-		o(m.opt)
+		o(m)
 	}
 	return m
 }
