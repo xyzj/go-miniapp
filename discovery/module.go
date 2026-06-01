@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	DefaultServiceGroup = "gomicro_group"
+	DefaultServiceGroup = "goapp_group"
 	DefaultModuleName   = "discovery"
 )
 

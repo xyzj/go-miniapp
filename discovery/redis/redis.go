@@ -91,9 +91,9 @@ func (m *Module) Start(ctx framework.Context) error {
 	m.wg.Go(func() {
 		m.registerLoop(ctx)
 	})
-	m.wg.Go(func() {
-		m.scanLoop(ctx)
-	})
+	// m.wg.Go(func() {
+	// 	m.scanLoop(ctx)
+	// })
 
 	ctx.Provide(m.name, m)
 	return nil
@@ -138,12 +138,14 @@ func (m *Module) registerLoop(ctx framework.Context) {
 	ticker := time.NewTicker(discovery.DiscoveryInterval())
 	defer ticker.Stop()
 	m.publishAll(ctx)
+	m.refreshFromRedis(ctx)
 	for {
 		select {
 		case <-m.runCtx.Done():
 			return
 		case <-ticker.C:
 			m.publishAll(ctx)
+			m.refreshFromRedis(ctx)
 		}
 	}
 }

@@ -37,7 +37,7 @@ func NewApp(opts ...FrameworkOption) (*App, error) {
 	// 应用工厂选项
 	factoryOpts := &frameworkOption{
 		logger:  logger.NewNilLogger(),
-		version: &gocmd.Info{Name: "GoMicroApp", Version: "0.0.1"},
+		version: &gocmd.Info{Name: "GoMiniApp", Version: "0.0.1"},
 		debug:   *debug,
 	}
 	for _, opt := range opts {

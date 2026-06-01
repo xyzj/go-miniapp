@@ -80,7 +80,7 @@ func (m *MQTTModule) Init(reg framework.Registry) error {
 	if m.cfg.Broker == "" {
 		m.cfg = Config{
 			Broker:   "tls://localhost:1881",
-			ClientID: "go-micro_" + toolbox.GetUUID1(),
+			ClientID: "goapp_" + toolbox.GetUUID1(),
 			Username: "user",
 			Password: "pass",
 			TLS: TLSConfig{

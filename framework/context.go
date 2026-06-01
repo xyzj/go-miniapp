@@ -36,11 +36,11 @@ func (c *Context) Debug() bool {
 	return c.options.debug
 }
 
-func (c *Context) AppInfo() *gocmd.Info {
+func (c *Context) AppInfo() gocmd.Info {
 	if c.options == nil || c.options.version == nil {
-		return &gocmd.Info{}
+		return gocmd.Info{}
 	}
-	return c.options.version
+	return *c.options.version
 }
 
 func (c *Context) Provide(name string, instance any) {

@@ -120,7 +120,7 @@ func (m *Module) Start(ctx framework.Context) error {
 		return nil
 	}
 	m.s = &http.Server{
-		Addr:              fmt.Sprintf("%s:%d", m.cfg.BindAddr, m.cfg.Port),
+		Addr:              net.JoinHostPort(m.cfg.BindAddr, fmt.Sprintf("%d", m.cfg.Port)),
 		Handler:           m.opt.handler,
 		ReadTimeout:       time.Duration(m.cfg.ReadTimeout) * time.Second,
 		WriteTimeout:      time.Duration(m.cfg.WriteTimeout) * time.Second,
