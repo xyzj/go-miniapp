@@ -94,6 +94,9 @@ func (m *MDNSDiscovery) Start(ctx framework.Context) error {
 							ctx.Logger().Error("panic in processing mDNS entry: " + r.(error).Error())
 						}
 					}()
+					if entry.Service != m.cfg.ServiceGroup {
+						return
+					}
 					if len(entry.Text) < 4 {
 						return
 					}
