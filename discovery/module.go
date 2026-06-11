@@ -26,6 +26,8 @@ const (
 	DiscoveryTypeNone DiscoveryType = iota
 	DiscoveryTypeMDNS
 	DiscoveryTypeUnixSock
+	DiscoveryTypeRedis
+	DiscoveryTypeMqtt
 )
 
 func DiscoveryInterval() time.Duration {

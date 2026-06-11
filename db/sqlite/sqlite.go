@@ -29,6 +29,25 @@ type Module struct {
 
 type ModuleOptions func(*Module)
 
+func (m *Module) WithDSN(dsn string) *Module {
+	m.cfg.DSN = dsn
+	return m
+}
+
+func (m *Module) WithMaxOpenConns(maxOpenConns int) *Module {
+	m.cfg.MaxOpenConns = maxOpenConns
+	return m
+}
+
+func (m *Module) WithMaxIdleConns(maxIdleConns int) *Module {
+	m.cfg.MaxIdleConns = maxIdleConns
+	return m
+}
+
+func (m *Module) WithConnMaxLifetime(connMaxLifetimeSec int) *Module {
+	m.cfg.ConnMaxLifetime = connMaxLifetimeSec
+	return m
+}
 func (m *Module) WithName(name string) *Module {
 	m.name = name
 	return m
@@ -65,7 +84,7 @@ func (m *Module) Init(reg framework.Registry) error {
 	}
 	if m.cfg.DSN == "" {
 		m.cfg = Config{
-			DSN:             "./data/app.db",
+			DSN:             "./data/app.db?_journal_mode=WAL&_synchronous=NORMAL&_cache_size=100000",
 			MaxOpenConns:    1,
 			MaxIdleConns:    1,
 			ConnMaxLifetime: 300,
