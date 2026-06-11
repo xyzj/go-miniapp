@@ -9,8 +9,8 @@ import (
 	"github.com/jackc/pgx/v5"
 	dsn "github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/stdlib"
-	"github.com/xyzj/gominiapp/db"
-	"github.com/xyzj/gominiapp/framework"
+	"github.com/xyzj/miniapp/db"
+	"github.com/xyzj/miniapp/framework"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

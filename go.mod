@@ -1,4 +1,4 @@
-module github.com/xyzj/gominiapp
+module github.com/xyzj/miniapp
 
 go 1.26.2
 

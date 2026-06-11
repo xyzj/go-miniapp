@@ -9,8 +9,8 @@ import (
 	"time"
 
 	rediscli "github.com/redis/go-redis/v9"
-	"github.com/xyzj/gominiapp/discovery"
-	"github.com/xyzj/gominiapp/framework"
+	"github.com/xyzj/miniapp/discovery"
+	"github.com/xyzj/miniapp/framework"
 )
 
 const (

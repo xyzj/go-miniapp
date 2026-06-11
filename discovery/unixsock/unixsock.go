@@ -12,8 +12,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/xyzj/gominiapp/discovery"
-	"github.com/xyzj/gominiapp/framework"
+	"github.com/xyzj/miniapp/discovery"
+	"github.com/xyzj/miniapp/framework"
 )
 
 // type peerState struct {

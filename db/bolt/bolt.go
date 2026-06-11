@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/xyzj/gominiapp/framework"
+	"github.com/xyzj/miniapp/framework"
 	"github.com/xyzj/toolbox/db"
 )
 
