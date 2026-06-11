@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/xyzj/gomicroapp/framework"
-	"github.com/xyzj/gomicroapp/mq"
+	"github.com/xyzj/gominiapp/framework"
+	"github.com/xyzj/gominiapp/mq"
 	"github.com/xyzj/toolbox"
 	"github.com/xyzj/toolbox/crypto"
 	mqtt "github.com/xyzj/toolbox/mq"

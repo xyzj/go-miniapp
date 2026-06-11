@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/xyzj/gomicroapp/db"
-	"github.com/xyzj/gomicroapp/framework"
+	"github.com/xyzj/gominiapp/db"
+	"github.com/xyzj/gominiapp/framework"
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 )

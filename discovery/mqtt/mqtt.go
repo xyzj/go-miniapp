@@ -10,9 +10,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/xyzj/gomicroapp/discovery"
-	"github.com/xyzj/gomicroapp/framework"
-	mqmqtt "github.com/xyzj/gomicroapp/mq/mqtt"
+	"github.com/xyzj/gominiapp/discovery"
+	"github.com/xyzj/gominiapp/framework"
+	mqmqtt "github.com/xyzj/gominiapp/mq/mqtt"
 	"github.com/xyzj/toolbox/crypto"
 	toolboxmq "github.com/xyzj/toolbox/mq"
 )

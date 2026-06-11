@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/xyzj/gomicroapp/db"
-	"github.com/xyzj/gomicroapp/framework"
+	"github.com/xyzj/gominiapp/db"
+	"github.com/xyzj/gominiapp/framework"
 	_ "modernc.org/sqlite"
 )
 

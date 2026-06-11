@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/redis/go-redis/v9"
-	"github.com/xyzj/gomicroapp/framework"
+	"github.com/xyzj/gominiapp/framework"
 )
 
 type Config struct {

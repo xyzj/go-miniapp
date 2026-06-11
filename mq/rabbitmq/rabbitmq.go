@@ -6,8 +6,8 @@ import (
 	"time"
 
 	amqp "github.com/rabbitmq/amqp091-go"
-	"github.com/xyzj/gomicroapp/framework"
-	"github.com/xyzj/gomicroapp/mq"
+	"github.com/xyzj/gominiapp/framework"
+	"github.com/xyzj/gominiapp/mq"
 )
 
 const (

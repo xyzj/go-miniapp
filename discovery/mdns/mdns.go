@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/grandcat/zeroconf"
-	"github.com/xyzj/gomicroapp/discovery"
-	"github.com/xyzj/gomicroapp/framework"
+	"github.com/xyzj/gominiapp/discovery"
+	"github.com/xyzj/gominiapp/framework"
 	"github.com/xyzj/toolbox/cache"
 )
 

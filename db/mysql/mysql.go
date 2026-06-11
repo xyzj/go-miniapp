@@ -7,8 +7,8 @@ import (
 	"time"
 
 	dsn "github.com/go-sql-driver/mysql"
-	"github.com/xyzj/gomicroapp/db"
-	"github.com/xyzj/gomicroapp/framework"
+	"github.com/xyzj/gominiapp/db"
+	"github.com/xyzj/gominiapp/framework"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
