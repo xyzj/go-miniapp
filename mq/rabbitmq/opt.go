@@ -5,7 +5,7 @@ type Option struct {
 	handler func(topic string, payload []byte) // 业务处理逻辑
 }
 
-func WithSubscription(topics []string, handler func(topic string, payload []byte)) ModuleOptions {
+func WithSubscription(topics []string, handler func(topic string, payload []byte)) Options {
 	if len(topics) == 0 || handler == nil {
 		topics = make([]string, 0)                      // 避免 nil 引用
 		handler = func(topic string, payload []byte) {} // 默认空处理函数

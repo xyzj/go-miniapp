@@ -35,14 +35,15 @@ type Module struct {
 	wg     sync.WaitGroup
 }
 
-type ModuleOptions func(*Module)
+type Options func(*Module)
 
-func (m *Module) WithMQTTName(name string) *Module {
-	m.mqttName = name
-	return m
+func WithMQTTName(name string) Options {
+	return func(m *Module) {
+		m.mqttName = name
+	}
 }
 
-func New(opts ...ModuleOptions) *Module {
+func New(opts ...Options) *Module {
 	m := &Module{
 		name:     discovery.DefaultModuleName,
 		cfg:      discovery.Config{},

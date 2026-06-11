@@ -27,14 +27,15 @@ type Module struct {
 	cli  *redis.Client
 	name string
 }
-type ModuleOptions func(*Module)
+type Options func(*Module)
 
-func (m *Module) WithName(name string) *Module {
-	m.name = name
-	return m
+func WithName(name string) Options {
+	return func(m *Module) {
+		m.name = name
+	}
 }
 
-func New(opt ...ModuleOptions) *Module {
+func New(opt ...Options) *Module {
 	m := &Module{
 		cfg:  Config{},
 		name: "redis",

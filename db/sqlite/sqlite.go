@@ -27,33 +27,15 @@ type Module struct {
 	name string
 }
 
-type ModuleOptions func(*Module)
+type Options func(*Module)
 
-func (m *Module) WithDSN(dsn string) *Module {
-	m.cfg.DSN = dsn
-	return m
+func WithName(name string) Options {
+	return func(m *Module) {
+		m.name = name
+	}
 }
 
-func (m *Module) WithMaxOpenConns(maxOpenConns int) *Module {
-	m.cfg.MaxOpenConns = maxOpenConns
-	return m
-}
-
-func (m *Module) WithMaxIdleConns(maxIdleConns int) *Module {
-	m.cfg.MaxIdleConns = maxIdleConns
-	return m
-}
-
-func (m *Module) WithConnMaxLifetime(connMaxLifetimeSec int) *Module {
-	m.cfg.ConnMaxLifetime = connMaxLifetimeSec
-	return m
-}
-func (m *Module) WithName(name string) *Module {
-	m.name = name
-	return m
-}
-
-func New(opt ...ModuleOptions) *Module {
+func New(opt ...Options) *Module {
 	m := &Module{
 		cfg:  Config{},
 		name: "sqlite",

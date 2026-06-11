@@ -10,7 +10,7 @@ import (
 func NewLoggerContext(ctx context.Context, log logger.Logger) *Context {
 	return &Context{
 		Context: ctx,
-		options: &frameworkOption{
+		options: &option{
 			logger: log,
 		},
 	}
@@ -19,7 +19,7 @@ func NewLoggerContext(ctx context.Context, log logger.Logger) *Context {
 type Context struct {
 	context.Context
 	reg     Registry
-	options *frameworkOption
+	options *option
 }
 
 func (c *Context) Logger() logger.Logger {

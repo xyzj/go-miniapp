@@ -35,14 +35,15 @@ type MQTTModule struct {
 	name string
 }
 
-type ModuleOptions func(*MQTTModule)
+type Options func(*MQTTModule)
 
-func (m *MQTTModule) WithName(name string) *MQTTModule {
-	m.name = name
-	return m
+func WithName(name string) Options {
+	return func(m *MQTTModule) {
+		m.name = name
+	}
 }
 
-func New(opt ...ModuleOptions) *MQTTModule {
+func New(opt ...Options) *MQTTModule {
 	m := &MQTTModule{
 		name: "mqtt",
 		cfg:  Config{}, // 初始化配置以避免 nil 引用

@@ -12,7 +12,7 @@ type App struct {
 	orderedMods []Module
 	instances   sync.Map
 	v           *viper.Viper // 统一配置中心
-	opt         *frameworkOption
+	opt         *option
 	ctx         Context
 	cmd         *gocmd.Program
 }

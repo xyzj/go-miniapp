@@ -32,14 +32,15 @@ type Module struct {
 	cancel context.CancelFunc
 	wg     sync.WaitGroup
 }
-type ModuleOptions func(*Module)
+type Options func(*Module)
 
-func (m *Module) WithRedisCliName(name string) *Module {
-	m.redisName = name
-	return m
+func WithRedisCliName(name string) Options {
+	return func(m *Module) {
+		m.redisName = name
+	}
 }
 
-func New(opts ...ModuleOptions) *Module {
+func New(opts ...Options) *Module {
 	m := &Module{name: discovery.DefaultModuleName, redisName: defaultRedisModuleName, cfg: discovery.Config{}}
 	for _, opt := range opts {
 		opt(m)

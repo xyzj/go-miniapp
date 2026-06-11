@@ -6,17 +6,17 @@ import (
 	"github.com/xyzj/toolbox/logger"
 )
 
-type frameworkOption struct {
+type option struct {
 	logger  logger.Logger // 日志记录器
 	version *gocmd.Info   // 进程信息
 	debug   bool          // 是否开启debug模式
 }
 
-type FrameworkOption func(*frameworkOption)
+type Options func(*option)
 
 // WithVersion 设置进程信息（如版本号）
-func WithVersion(info *gocmd.Info) FrameworkOption {
-	return func(opt *frameworkOption) {
+func WithVersion(info *gocmd.Info) Options {
+	return func(opt *option) {
 		opt.version = info
 	}
 }

@@ -27,7 +27,7 @@ type Module struct {
 	client  tcpfactory.Client
 	depend  []string
 }
-type ModuleOptions func(*Module)
+type Options func(*Module)
 
 func (m *Module) WithName(name string) *Module {
 	m.name = name
@@ -38,7 +38,7 @@ func (m *Module) WithClient(client tcpfactory.Client) *Module {
 	return m
 }
 
-func New(opt ...ModuleOptions) *Module {
+func New(opt ...Options) *Module {
 	m := &Module{
 		cfg:    Config{},
 		name:   "tcp",

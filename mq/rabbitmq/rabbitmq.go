@@ -45,14 +45,15 @@ type RabbitMQModule struct {
 	name string
 }
 
-type ModuleOptions func(*RabbitMQModule)
+type Options func(*RabbitMQModule)
 
-func (m *RabbitMQModule) WithName(name string) *RabbitMQModule {
-	m.name = name
-	return m
+func WithName(name string) Options {
+	return func(m *RabbitMQModule) {
+		m.name = name
+	}
 }
 
-func New(opt ...ModuleOptions) *RabbitMQModule {
+func New(opt ...Options) *RabbitMQModule {
 	m := &RabbitMQModule{
 		name: "rabbitmq",
 		conn: nil,

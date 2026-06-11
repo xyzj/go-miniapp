@@ -27,7 +27,7 @@ func parseStartupFlags() {
 	_ = flag.CommandLine.Parse(args)
 }
 
-func NewApp(opts ...FrameworkOption) (*App, error) {
+func NewApp(opts ...Options) (*App, error) {
 	parseStartupFlags()
 	app := &App{
 		modules:   make(map[string]Module),
@@ -35,7 +35,7 @@ func NewApp(opts ...FrameworkOption) (*App, error) {
 		v:         viper.New(),
 	}
 	// 应用工厂选项
-	factoryOpts := &frameworkOption{
+	factoryOpts := &option{
 		logger:  logger.NewConsoleLogger(),
 		version: &gocmd.Info{Name: "GoMiniApp", Version: "0.0.1"},
 		debug:   *debug,
